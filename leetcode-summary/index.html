@@ -899,6 +899,67 @@ public int numIslands(char[][] grid) {
     }</code></pre></details>
 
 
+<h3 id="Traversal"><a href="#Traversal" class="headerlink" title="Traversal"></a>Traversal</h3><details>
+<summary></summary>
+
+<blockquote>
+</blockquote>
+<pre class=" language-java"><code class="language-java"></code></pre>
+</details>
+
+
+<details>
+<summary>297. Serialize and Deserialize Binary Tree</summary>
+
+<blockquote>
+<p>Serialize: return current value, and recursively call children<br>Deserialize: Store in a queue, works life BFS</p>
+</blockquote>
+<p>Run time: $O(n)$, space: $O(n)$</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">// Encodes a tree to a single string.</span>
+    <span class="token keyword">public</span> String <span class="token function">serialize</span><span class="token punctuation">(</span>TreeNode root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>root <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">"null"</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> root<span class="token punctuation">.</span>val<span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span><span class="token function">serialize</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span><span class="token function">serialize</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// Decodes your encoded data to tree.</span>
+    <span class="token keyword">public</span> TreeNode <span class="token function">deserialize</span><span class="token punctuation">(</span>String data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Queue<span class="token operator">&lt;</span>String<span class="token operator">></span> queue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">helper</span><span class="token punctuation">(</span>queue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    TreeNode <span class="token function">helper</span><span class="token punctuation">(</span>Queue<span class="token operator">&lt;</span>String<span class="token operator">></span> q<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        String s <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"null"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        TreeNode root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>Integer<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        root<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">helper</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        root<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">helper</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> root<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+</details>
+
+
+<details>
+<summary>199. Binary Tree Right Side View</summary>
+
+<blockquote>
+<p>Use helper function, check if the level equals to the size of the list<br>This way makes sure that only the rightest node will be added to the list<br>call right child, then left child</p>
+</blockquote>
+<p>Run time: $O(n)$, space: $O(n)$</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> <span class="token function">rightSideView</span><span class="token punctuation">(</span>TreeNode root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">helper</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> ans<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">helper</span><span class="token punctuation">(</span>TreeNode root<span class="token punctuation">,</span> List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> ans<span class="token punctuation">,</span> <span class="token keyword">int</span> level<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>root <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>level <span class="token operator">==</span> ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> ans<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">helper</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">,</span> ans<span class="token punctuation">,</span> level<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">helper</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> ans<span class="token punctuation">,</span> level<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+</details>
+
+
 <h3 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h3><details>
 <summary></summary>
 
@@ -1572,6 +1633,74 @@ Run time<span class="token operator">:</span> $<span class="token function">O</s
 </details>
 
 <details>
+<summary>Pure Storage OA</summary>
+
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Complete the compute_number_score function below.</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">compute_number_score</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> score <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> numSum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">""</span><span class="token operator">+</span>number<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'7'</span><span class="token punctuation">)</span> score <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 7</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> score <span class="token operator">+=</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// even digit</span>
+            numSum <span class="token operator">+=</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            i<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>numSum <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> score <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// multiple of 3</span>
+
+        i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> count5 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// consecutive 5s</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'5'</span> <span class="token operator">&amp;&amp;</span> arr<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'5'</span><span class="token punctuation">)</span> count5<span class="token operator">++</span><span class="token punctuation">;</span>
+            i<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        score <span class="token operator">+=</span> count5 <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+        i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// descending</span>
+            len<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span> <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                len<span class="token operator">++</span><span class="token punctuation">;</span>
+                i<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            score <span class="token operator">+=</span> len<span class="token operator">*</span>len<span class="token punctuation">;</span>
+            len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            i<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> score<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Complete the check_log_history function below.</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">check_log_history</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>String<span class="token operator">></span> events<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Stack<span class="token operator">&lt;</span>String<span class="token operator">></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> keys <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> events<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            String op <span class="token operator">=</span> events<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            String key <span class="token operator">=</span> events<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>op<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"ACQUIRE"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>keys<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    keys<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>op<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"RELEASE"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                String lastKey <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>lastKey<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    keys<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span> <span class="token keyword">return</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> events<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+</details>
+
+
+<details>
 <summary>157. Read N Characters Given Read4</summary>
 
 <blockquote>
@@ -1918,6 +2047,67 @@ Return the size of minHeap
 <blockquote>
 </blockquote>
 <pre class=" language-java"><code class="language-java"></code></pre>
+</details>
+
+
+<details>
+<summary>273. Integer to English Words</summary>
+
+<blockquote>
+<p>List possible formats: less than ten, twenty, hundred, thousand, million, billion<br>Then list the general string cases for less than ten, twenty, hundred<br>Check edge case when input is 0<br>Helper function to recursive translate number from largest digit to smallest digit, trim in the end</p>
+</blockquote>
+<p>Run time: $O(n)$, space: $O(n)$</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">final</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> below10 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"One"</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">,</span> 
+                                                  <span class="token string">"Four"</span><span class="token punctuation">,</span> <span class="token string">"Five"</span><span class="token punctuation">,</span> <span class="token string">"Six"</span><span class="token punctuation">,</span> <span class="token string">"Seven"</span><span class="token punctuation">,</span> 
+                                                 <span class="token string">"Eight"</span><span class="token punctuation">,</span> <span class="token string">"Nine"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> below20 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">"Ten"</span><span class="token punctuation">,</span> <span class="token string">"Eleven"</span><span class="token punctuation">,</span> <span class="token string">"Twelve"</span><span class="token punctuation">,</span> <span class="token string">"Thirteen"</span><span class="token punctuation">,</span> 
+                                                  <span class="token string">"Fourteen"</span><span class="token punctuation">,</span> <span class="token string">"Fifteen"</span><span class="token punctuation">,</span> <span class="token string">"Sixteen"</span><span class="token punctuation">,</span> <span class="token string">"Seventeen"</span><span class="token punctuation">,</span> 
+                                                 <span class="token string">"Eighteen"</span><span class="token punctuation">,</span> <span class="token string">"Nineteen"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> below100 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"Ten"</span><span class="token punctuation">,</span> <span class="token string">"Twenty"</span><span class="token punctuation">,</span> <span class="token string">"Thirty"</span><span class="token punctuation">,</span> <span class="token string">"Forty"</span><span class="token punctuation">,</span> 
+                                                   <span class="token string">"Fifty"</span><span class="token punctuation">,</span> <span class="token string">"Sixty"</span><span class="token punctuation">,</span> <span class="token string">"Seventy"</span><span class="token punctuation">,</span> <span class="token string">"Eighty"</span><span class="token punctuation">,</span> <span class="token string">"Ninety"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> String <span class="token function">numberToWords</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>num <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">"Zero"</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">helper</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        String result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">)</span> result <span class="token operator">=</span> below10<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span> result <span class="token operator">=</span> below20<span class="token punctuation">[</span>num<span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">)</span> result <span class="token operator">=</span> below100<span class="token punctuation">[</span>num<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span><span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">1000</span><span class="token punctuation">)</span> result <span class="token operator">=</span> <span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" Hundred "</span><span class="token operator">+</span><span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token operator">%</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">1000000</span><span class="token punctuation">)</span> result <span class="token operator">=</span> <span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token operator">/</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" Thousand "</span><span class="token operator">+</span><span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token operator">%</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">&lt;</span> <span class="token number">1000000000</span><span class="token punctuation">)</span> result <span class="token operator">=</span> <span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token operator">/</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" Million "</span><span class="token operator">+</span><span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token operator">%</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> result <span class="token operator">=</span> <span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token operator">/</span><span class="token number">1000000000</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" Billion "</span><span class="token operator">+</span><span class="token function">helper</span><span class="token punctuation">(</span>num<span class="token operator">%</span><span class="token number">1000000000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// delete extra space</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</details>
+
+
+<details>
+<summary>67. Add Binary</summary>
+
+<blockquote>
+<p>Use one while loop to get the sum of each digit (if applicable) and carry-in<br>Mod 2 and appended, divided by 2 and stored to carry-in<br>At last, if carry-in is 1, append it, and reverse and to string</p>
+</blockquote>
+<p>Run time: $O(n)$, space: $O(n)$</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> String <span class="token function">addBinary</span><span class="token punctuation">(</span>String a<span class="token punctuation">,</span> String b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// String ans = "";</span>
+        StringBuilder sb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> ptr1 <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> ptr2 <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> carryin <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>ptr1 <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">||</span> ptr2 <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">int</span> sum <span class="token operator">=</span> carryin<span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>ptr2 <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> sum <span class="token operator">+=</span> b<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>ptr2<span class="token operator">--</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>ptr1 <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> sum <span class="token operator">+=</span> a<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>ptr1<span class="token operator">--</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">;</span>
+            sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>sum <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            carryin <span class="token operator">=</span> sum <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>carryin <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>carryin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
 </details>
 
 

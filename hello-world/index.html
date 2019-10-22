@@ -140,7 +140,7 @@
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>Here I will write down some key concepts about Java when I read Head First Java. </p>
+                <p>Here I will write down some key concepts about Java when I read Head First Java.<br>Notes written by others: <a href="https://archerimagine.wordpress.com/notes-of-book/head-first-java/" target="_blank" rel="noopener">link</a></p>
 <p>9.16</p>
 <h3 id="1-Dive-in-a-Quick-Dip"><a href="#1-Dive-in-a-Quick-Dip" class="headerlink" title="1 Dive in a Quick Dip"></a>1 Dive in a Quick Dip</h3><p>How java works:<br>Source –&gt; Compiler –&gt; Output –&gt; Virtual Machine</p>
 <p>A Java program/application only has one main method</p>
@@ -165,6 +165,33 @@
 <li>if basic variables are in MA, the value is copied, and the initial variable remain unchanged.</li>
 <li>if reference variable is in MA, the address is copied (and passed as value), and the initial variable will be changed.</li>
 </ol>
+<h3 id="7-Inheritance-and-Polymorphism"><a href="#7-Inheritance-and-Polymorphism" class="headerlink" title="7 Inheritance and Polymorphism"></a>7 Inheritance and Polymorphism</h3><p>Polymorphism example: <code>Animal myDog = new Dog();</code><br>The reference variable type is declared as Animal, but the object is. created as <code>new Dog()</code>.<br>With polymorphism, the reference type can be a superclass of the actual object type.</p>
+<pre class=" language-java"><code class="language-java">
+Animal<span class="token punctuation">[</span><span class="token punctuation">]</span> animals <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+animals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+animals<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Make a class <code>private</code>: if you need security<br>Make a method/class <code>final</code>: protect a specific method from being overridden; want to guarantee that none of the methods in that class will ever be overridden.</p>
+<p><strong>Overriding rules:</strong></p>
+<ol>
+<li>arguments must be the same, and return types must be compatible</li>
+<li>the method can’t be less accessible</li>
+</ol>
+<p><strong>Overloading rules:</strong></p>
+<ol>
+<li>return types can be different</li>
+<li>cannot change only the return type (also change the argument list)</li>
+<li>can vary the access levels in any direction</li>
+</ol>
+<h3 id="8-Interfaces-and-Abstract-Classes"><a href="#8-Interfaces-and-Abstract-Classes" class="headerlink" title="8 Interfaces and Abstract Classes"></a>8 Interfaces and Abstract Classes</h3><p><strong>Abstract class:</strong></p>
+<ol>
+<li>has no body</li>
+<li>if declare an abstract method, must also mark the class abstract</li>
+<li>good for: polymorphism, inheritable method implementations</li>
+<li>concrete class must implement all abstract methods (like overriding)</li>
+</ol>
+<p>Every class in Java extends class Object.<br><strong>Interface:</strong> all methods are abstract</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Pet</span><span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token keyword">extends</span> <span class="token class-name">Canine</span> <span class="token keyword">implements</span> <span class="token class-name">Pet</span><span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span></code></pre>
 <p>Encapsulation</p>
 <p>Mark instance variables private, mark getters and setter public.</p>
 <p>The signed left shift operator “&lt;&lt;” shifts a bit pattern to the left<br>The signed right shift operator “&gt;&gt;” shifts a bit pattern to the right.<br>The unsigned right shift operator “&gt;&gt;&gt;” shifts a zero into the leftmost position</p>

@@ -1,45 +1,33 @@
-<h1>markdown-cv</h1>
-<p>A curriculum vitae maintained in plain text and rendered to HTML and PDF using CSS.</p>
+<h1 id="markdown-cv"><a href="#markdown-cv" class="headerlink" title="markdown-cv"></a>markdown-cv</h1><p>A curriculum vitae maintained in plain text and rendered to HTML and PDF using CSS.</p>
 <p>For more details, see the <a href="http://elipapa.github.io/markdown-cv">project page</a>, or the blog post on <a href="http://elipapa.github.io/blog/why-i-switched-to-markdown-for-my-cv.html">why I switched to markdown for my CV</a>.</p>
 <hr>
-<h2 id="Customization">Customization</h2>
-<p>Simply <a href="https://github.com/elipapa/markdown-cv">fork the markdown-cv repo</a></p>
+<h2 id="Customization"><a href="#Customization" class="headerlink" title="Customization"></a>Customization</h2><p>Simply <a href="https://github.com/elipapa/markdown-cv">fork the markdown-cv repo</a></p>
 <p><img src="https://help.github.com/assets/images/help/repository/fork_button.jpg" alt=""></p>
 <p>and edit the <code>index.md</code> file <a href="https://help.github.com/articles/editing-files-in-your-repository/">directly in Github</a></p>
 <p><img src="https://help.github.com/assets/images/help/repository/edit-file-edit-button.png" alt=""></p>
 <p>adding your skills, jobs and education.</p>
 <p><img src="https://help.github.com/assets/images/help/repository/edit-readme-light.png" alt=""></p>
-<h2 id="Distribution">Distribution</h2>
-<p>To transform your plain text CV into a beautiful and shareable HTML page, you have two options:</p>
-<h3 id="I-Use-Github-Pages-to-publish-it-online">I. Use Github Pages to publish it online</h3>
-<ol>
+<h2 id="Distribution"><a href="#Distribution" class="headerlink" title="Distribution"></a>Distribution</h2><p>To transform your plain text CV into a beautiful and shareable HTML page, you have two options:</p>
+<h3 id="I-Use-Github-Pages-to-publish-it-online"><a href="#I-Use-Github-Pages-to-publish-it-online" class="headerlink" title="I. Use Github Pages to publish it online"></a>I. Use Github Pages to publish it online</h3><ol>
 <li>Delete the existing <code>gh-pages</code> branch from your fork. It will only contain this webpage. You can either use git or <a href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/#deleting-a-branch">the Github web interface</a>.</li>
 <li>Create a new branch called <code>gh-pages</code>.</li>
 <li>Head to <em>yourusername</em>.github.io/markdown-cv to see your CV live.</li>
 </ol>
 <p>Any change you want to make to your CV from then on would have to be done on the <code>gh-pages</code> branch and will be immediately rendered by Github Pages.</p>
-<h3 id="II-Build-it-locally-and-print-a-PDF">II. Build it locally and print a PDF</h3>
-<ol>
+<h3 id="II-Build-it-locally-and-print-a-PDF"><a href="#II-Build-it-locally-and-print-a-PDF" class="headerlink" title="II. Build it locally and print a PDF"></a>II. Build it locally and print a PDF</h3><ol>
 <li>To <a href="https://jekyllrb.com/docs/installation/">install jekyll</a>, run <code>gem install bundler jekyll</code> from the command line.</li>
 <li><a href="https://help.github.com/en/articles/cloning-a-repository">Clone</a> your fork of markdown-cv to your local machine.</li>
 <li>Type <code>jekyll serve</code> to render your CV at <a href="http://localhost:4000">http://localhost:4000</a>.</li>
 <li>You can edit the <code>index.md</code> file and see the changes live in your browser.</li>
 <li>To print a PDF, press <kbd>⌘</kbd> + <kbd>p</kbd>. Print and web CSS media queries should take care of the styling.</li>
 </ol>
-<h2 id="Styling">Styling</h2>
-<p>The included CSS will render your CV in two styles:<br>
-s</p>
+<h2 id="Styling"><a href="#Styling" class="headerlink" title="Styling"></a>Styling</h2><p>The included CSS will render your CV in two styles:<br>s</p>
 <ol>
-<li><code>kjhealy</code> the original default, inspired by <a href="https://github.com/kjhealy/kjh-vita">kjhealy’s vita<br>
-template</a>.</li>
-<li><code>davewhipp</code> is a tweaked version of <code>kjhealy</code>, with bigger fonts and dates<br>
-right aligned.</li>
+<li><code>kjhealy</code> the original default, inspired by <a href="https://github.com/kjhealy/kjh-vita">kjhealy’s vita<br>template</a>.</li>
+<li><code>davewhipp</code> is a tweaked version of <code>kjhealy</code>, with bigger fonts and dates<br>right aligned.</li>
 </ol>
-<p>To change the default style, simply change the variable in the<br>
-<code>_config.yml</code> file.</p>
+<p>To change the default style, simply change the variable in the<br><code>_config.yml</code> file.</p>
 <p>Any other styling is possible. More CSS style contributions and forks are welcome!</p>
-<h3 id="Author">Author</h3>
-<p>Eliseo Papa (<a href="http://twitter.com/elipapa">Twitter</a>/<a href="http://github.com/elipapa">Github</a>/<a href="https://elipapa.github.io">Website</a>).</p>
+<h3 id="Author"><a href="#Author" class="headerlink" title="Author"></a>Author</h3><p>Eliseo Papa (<a href="http://twitter.com/elipapa">Twitter</a>/<a href="http://github.com/elipapa">Github</a>/<a href="https://elipapa.github.io">Website</a>).</p>
 <p><img src="https://s.gravatar.com/avatar/eae1f0c01afda2bed9ce9cb88f6873f6?s=100" alt="Eliseo Papa"></p>
-<h3 id="License">License</h3>
-<p><a href="https://github.com/elipapa/markdown-cv/blob/master/LICENSE">MIT License</a></p>
+<h3 id="License"><a href="#License" class="headerlink" title="License"></a>License</h3><p><a href="https://github.com/elipapa/markdown-cv/blob/master/LICENSE">MIT License</a></p>

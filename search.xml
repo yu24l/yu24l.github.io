@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>COS Prep</title>
+    <url>/cos-prep/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><details>
+<summary></summary>
+</details>]]></content>
+  </entry>
+  <entry>
     <title>Java Basics Summary</title>
     <url>/java-basics/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Here I will write down some key concepts about Java when I read Head First Java.<br>Notes written by others: <a href="https://archerimagine.wordpress.com/notes-of-book/head-first-java/">link</a></p>
@@ -59,6 +66,12 @@
 <h2 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a><a href="https://docs.oracle.com/javase/8/docs/api/index.html">Scanner</a></h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"><span class="keyword">while</span>(sc.hasNextLine())&#123;</span><br><span class="line">	String s = sc.nextLine();</span><br><span class="line">	<span class="comment">// int i = sc.nextInt();</span></span><br><span class="line">	<span class="comment">// do more things</span></span><br><span class="line">&#125; </span><br><span class="line">sc.close();</span><br></pre></td></tr></table></figure>
 <h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html">StringBuilder</a></h2><p><strong>Commonly used methods:</strong> append, charAt, delete, deleteCharAt, length, reverse, toString, setLength, substring, setCharAt, insert<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">StringBuilder str = <span class="keyword">new</span> StringBuilder(<span class="string">&quot;AAAABBBCCCC&quot;</span>); </span><br><span class="line">System.out.println(<span class="string">&quot;String = &quot;</span>+ str.toString());  <span class="comment">// print string </span></span><br><span class="line">StringBuilder reverseStr = str.reverse(); <span class="comment">// reverse the string </span></span><br></pre></td></tr></table></figure></p>
 <h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html">Arrays</a></h2><p><strong>Commonly used methods:</strong> asList, binarySearch, sort, equals, fill, toString</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>System Design Prep</title>
+    <url>/system-design-prep/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources:"></a>Resources:</h2><p><a href="https://docs.google.com/spreadsheets/d/1QDw6NhgD0LNKVIf6JujR1gG4kOdDd8ujnRREIxCILH8/edit#gid=1225717200">Break down by company 力扣</a><br><a href="https://www.1point3acres.com/bbs/thread-660847-1-1.html">【干货贴】我是如何准备系统设计的</a><br><a href="https://www.1point3acres.com/bbs/collection/232505">Facebook面试高频题汇总 Software Engineer - 2021</a><br><a href="https://www.1point3acres.com/bbs/thread-690957-1-1.html">[Leetcode] 面试高频题型总结，上岸回馈</a><br><a href="https://www.1point3acres.com/bbs/thread-702250-1-1.html">脸书成功上岸经历和面试准备心得</a><br>Grokking the System Design Interview</p>
 ]]></content>
   </entry>
   <entry>
